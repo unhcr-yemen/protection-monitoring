@@ -1,0 +1,60 @@
+---
+title: "Protection Monitoring \n Preliminary exploration of results - draft not for distribution - "
+author: "UNHCR Yemen"
+date: " `r Sys.Date()`"
+output: 
+  word_document: 
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 8
+    toc: yes
+    toc_depth: 2
+    reference_docx: style-unhcr-portrait.docx
+---
+
+```{r setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
+mainDir <- getwd()
+
+## Load all required packages
+source(paste0(mainDir,"/0-packages.R"))
+library(koboloadeR)
+
+dico <- read.csv("/home/edouard/R-project/protection-monitoring-yemen/data/dico_form3.xls.csv", encoding="UTF-8", na.strings="")
+data <- read.csv("/home/edouard/R-project/protection-monitoring-yemen/data/data2.csv", encoding="UTF-8", na.strings="")
+
+
+data <- kobo_label(data, dico)
+
+```
+
+
+***
+***
+# Executive summary and main findings
+
+***
+# Background Introduction
+
+# Plotting Select_one questions
+
+
+
+```{r bar_one, echo=FALSE, warning=FALSE, cache=FALSE, fig.width=7, fig.height=3}
+
+
+#########################################################################################
+## Produce graphs of all select_one questions
+kobo_bar_one_print(data,dico)
+
+
+```
+
+# Plotting Select_multiple questions
+
+```{r bar_multi, echo=FALSE, warning=FALSE, cache=FALSE, fig.width=7, fig.height=6}
+
+#########################################################################################
+## Produce graphs of all select_multiple questions
+kobo_bar_multi_print(data,dico)
+
+```
