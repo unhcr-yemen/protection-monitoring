@@ -1,5 +1,9 @@
 #### Produce graphs
-source("code/1-loaddata.R")
+#source("code/1-loaddata.R")
+
+
+source("code/0-packages.R")
+library(koboloadeR)
 
 #########################################################################################
 ## Produce graphs of all select_one questions
@@ -14,3 +18,6 @@ kobo_bar_multi(data,dico)
 
 kobo_bar_one_facet(data,dico)
 
+#########################################################################################
+## Produce histogramme for all numeric variable
+kobo_histo(data,dico)

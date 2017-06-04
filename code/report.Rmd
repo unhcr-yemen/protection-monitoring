@@ -12,16 +12,18 @@ output:
     reference_docx: style-unhcr-portrait.docx
 ---
 
-```{r setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
+```{r setup, include=FALSE, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
 mainDir <- getwd()
+
+mainDirroot <- substring(mainDir, 0 , nchar(mainDir)- 5)
 
 ## Load all required packages
 source(paste0(mainDir,"/0-packages.R"))
 library(koboloadeR)
 
-dico <- read.csv("/home/edouard/R-project/protection-monitoring-yemen/data/dico_form3.xls.csv", encoding="UTF-8", na.strings="")
-data <- read.csv("/home/edouard/R-project/protection-monitoring-yemen/data/data2.csv", encoding="UTF-8", na.strings="")
 
+dico <- read.csv(paste0(mainDirroot,"/data/dico_form4.xls.csv"), encoding="UTF-8", na.strings="NA")
+data <- read.csv(paste0(mainDirroot,"/data/data2.csv"), encoding="UTF-8", na.strings="NA")
 
 data <- kobo_label(data, dico)
 
@@ -58,3 +60,24 @@ kobo_bar_one_print(data,dico)
 kobo_bar_multi_print(data,dico)
 
 ```
+
+
+# Plotting numeric questions
+
+```{r histogram, echo=FALSE, warning=FALSE, cache=FALSE, fig.width=7, fig.height=6}
+#########################################################################################
+## Produce histogramme for all numeric variable
+#kobo_histo_print(data,dico)
+
+```
+
+# Plotting facetted analysis
+
+```{r facet, echo=FALSE, warning=FALSE, cache=FALSE, fig.width=7, fig.height=8}
+
+########################################################################################
+### Produce faceted chart select_one
+
+kobo_bar_one_facet_print(data,dico)
+```
+
